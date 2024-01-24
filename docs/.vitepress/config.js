@@ -1,4 +1,5 @@
 module.exports = {
+    base: '/boat-wiki/',
     title: 'BoatLang Wiki',
     themeConfig: {
         nav: [
