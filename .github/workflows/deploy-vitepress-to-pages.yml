@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Build VitePress
+    name: Build and deploy VitePress website
     runs-on: ubuntu-latest
 
     steps:
@@ -23,3 +23,5 @@ jobs:
         run: |
           npm install
           npm run docs:build
+      - name: Deploy to GitHub Pages
+        uses: actions/upload-pages-artifact@v2
