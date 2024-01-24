@@ -1,10 +1,3 @@
----
-head:
-  - - link
-    - rel: stylesheet
-      href: https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css
----
-
 # Real Numeric Types
 [[toc]]
 
@@ -15,7 +8,7 @@ All real numeric types support arithmetic, comparison, and equality operators.
 ### Fixed Point
 | Keyword |   Range   | Bit Size |
 |---------|-----------|----------|
-|  norm   | $[-1, 1]$ |    8     |
+|  norm   | $[-1, +1]$ |    8     |
 
 ### Floating Point
 | Keyword |              Approximate Range              | Bit Size |

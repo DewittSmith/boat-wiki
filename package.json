@@ -12,9 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "markdown-it-mathjax3": "^4.3.2",
     "vitepress": "^1.0.0-rc.40"
-  },
-  "dependencies": {
-    "markdown-it-katex": "^2.0.3"
   }
 }
