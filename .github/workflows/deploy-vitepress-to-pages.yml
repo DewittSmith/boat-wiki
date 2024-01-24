@@ -1,0 +1,25 @@
+name: deploy-vitepress-to-pages
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build VitePress
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Run build
+        run: |
+          npm install
+          npm run docs:build
