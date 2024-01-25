@@ -9,7 +9,7 @@
     * [Boolean](/language-reference/types/bool): ```bool```, which represents ```true``` or ```false```
     * [Characters](/language-reference/types/char): ```char```, which represents a UTF-8 code unit
     * [Strings](/language-reference/types/string): ```string```
-* [Tuple Types](/): User-defined types of the form ```(T1, T2, ...)```
+* [Tuple Types](/language-reference/types/tuple): User-defined types of the form ```(T1, T2, ...)```
 * [Enum Types](/): User-defined types of the form ```enum E {...}```. An enum type is a distinct type with predefined constants.
 * [Struct Types](/): User-defined types of the form ```struct S {...}```
 * [Interface Types](/): User-defined types of the form ```interface I {...}```

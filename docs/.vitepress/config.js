@@ -26,6 +26,7 @@ module.exports = {
                             { text: 'Boolean', link: '/language-reference/types/bool' },
                             { text: 'Character', link: '/language-reference/types/char' },
                             { text: 'String', link: '/language-reference/types/string' },
+                            { text: 'Tuple', link: '/language-reference/types/tuple' },
                         ]
                     }
                 ]
