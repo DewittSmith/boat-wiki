@@ -25,3 +25,30 @@ Tuple types support the ```==``` and ```!=``` operators. These operators compare
 Two tuples are comparable when both of the following conditions are satisfied:
 * Both tuples have the same number of elements. For example, t1 != t2 doesn't compile if t1 and t2 have different numbers of elements.
 * For each tuple position, the corresponding elements from the left-hand and right-hand tuple operands are comparable with the ```==``` and ```!=``` operators.
+
+## Deconstruction
+It is possible to deconstruct types, that implement [IDeconstructible](/) interface to tuples.
+```cs
+public struct Point : IDeconstructible<int, int>
+{
+    private int x;
+    private int y;
+
+    public static Point New(int x, int y)
+    {
+        return Point { x = x, y = y };
+    }
+
+    IDeconstructible<int, int>.Deconstruct(out int x, out int y)
+    {
+        x = this.x;
+        y = this.y;
+    }
+}
+
+const (x, y) = Point.New(3, 5);
+(int x1, const y1) = Point.New(1, 2);
+
+print($"{x} {y} {x1} {y1}");
+// Output: 3 5 1 2
+```
