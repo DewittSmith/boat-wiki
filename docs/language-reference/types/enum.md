@@ -50,20 +50,38 @@ public enum PlayerType
     public int BaseDamage { get; private set; }
 }
 ```
-
-Every ```enum``` has a static method ```Values()```. It returns an array of all enum constants:
+Enums can contain any child members as [struct](/) does. Every ```enum``` has a static method ```Values()```. It returns an array of all enum constants:
 
 ```cs
-foreach(var day in Day.Values())
+public enum Direction
 {
-    print(day);
+    Up,
+    Down,
+    Left,
+    Right
+
+    public Direction Invert()
+    {
+        return switch (this)
+        {
+            Direction.Up => Direction.Down,
+            Direction.Down => Direction.Up,
+            Direction.Left => Direction.Right,
+            Direction.Right => Direction.Left
+        };
+    }
+}
+
+foreach (var direction in Direction.Values())
+{
+    print(direction);
 }
 
 // Output:
-// Monday
-// Tuesday
-// Wednesday
-// etc...
+// Up
+// Down
+// Left
+// Right
 ```
 
 ## Enums as Flags
