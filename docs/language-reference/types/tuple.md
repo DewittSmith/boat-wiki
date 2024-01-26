@@ -27,28 +27,26 @@ Two tuples are comparable when both of the following conditions are satisfied:
 * For each tuple position, the corresponding elements from the left-hand and right-hand tuple operands are comparable with the ```==``` and ```!=``` operators.
 
 ## Deconstruction
-It is possible to deconstruct types, that implement [IDeconstructible](/) interface to tuples.
+You can deconstruct types that implement [IDeconstructible](/) to tuples. It is possible to deconstruct up to 4 elements.
+
 ```cs
 public struct Point : IDeconstructible<int, int>
 {
-    private int x;
-    private int y;
-
-    public static Point New(int x, int y)
-    {
-        return Point { x = x, y = y };
-    }
+    public int X;
+    public int Y;
 
     IDeconstructible<int, int>.Deconstruct(out int x, out int y)
     {
-        x = this.x;
-        y = this.y;
+        x = X;
+        y = Y;
     }
 }
 
-const (x, y) = Point.New(3, 5);
-(int x1, const y1) = Point.New(1, 2);
+const p = Point { X: 5, Y: 3 };
 
-print($"{x} {y} {x1} {y1}");
-// Output: 3 5 1 2
+const (x0, y0) = p;
+const (x1, y1) = Point { X: 1, Y: 10};
+
+print($"{x0} {y0} {x1} {y1}");
+// Output: 5 3 1 10
 ```
