@@ -50,7 +50,7 @@ public enum PlayerType
     public int BaseDamage { get; private set; }
 }
 ```
-Enums can contain any child members as [struct](/) does. Every ```enum``` has a static method ```Values()```. It returns an array of all enum constants:
+Enums can contain any child members as [struct](/language-reference/types/struct) does. Every ```enum``` has a static method ```Values()```. It returns an array of all enum constants:
 
 ```cs
 public enum Direction
@@ -92,7 +92,8 @@ public enum Changes
     XChanged { Name: "X Changed" } = 0b_0001,
     YChanged { Name: "Y Changed" } = 0b_0010,
     ZChanged { Name: "Z Changed" } = 0b_0100,
-    AllChanged = XChanged | YChanged | ZChanged
+    XZChanged { Name: "XZ Changed" } = XChanged | ZChanged,
+    AllChanged = XChanged | YChanged | ZChanged,
     // AllChanged will not have 'Name' property defined.
     // You need to explicitly alias all the data.
 

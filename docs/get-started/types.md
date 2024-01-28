@@ -10,9 +10,9 @@
     * [Characters](/language-reference/types/char): ```char```, which represents a UTF-8 code unit
     * [Strings](/language-reference/types/string): ```string```
 * [Tuple Types](/language-reference/types/tuple): User-defined types of the form ```(T1, T2, ...)```
+* [Struct Types](/language-reference/types/struct): User-defined types of the form ```struct S {...}```
 * [Enum Types](/language-reference/types/enum): User-defined types of the form ```enum E {...}```. An enum type is a distinct type with predefined constants.
-* [Struct Types](/): User-defined types of the form ```struct S {...}```
-* [Interface Types](/): User-defined types of the form ```interface I {...}```
+* [Interface Types](/language-reference/types/interface): User-defined types of the form ```interface I {...}```
 * Array Types
     * [Fixed Array](/): ```TYPE[SIZE]```
     * [Dynamic Array](/): ```TYPE[]```

@@ -26,8 +26,10 @@ module.exports = {
                             { text: 'Boolean', link: '/language-reference/types/bool' },
                             { text: 'Character', link: '/language-reference/types/char' },
                             { text: 'String', link: '/language-reference/types/string' },
-                            { text: 'Enumeration', link: '/language-reference/types/enum' },
                             { text: 'Tuple', link: '/language-reference/types/tuple' },
+                            { text: 'Structure', link: '/language-reference/types/struct' },
+                            { text: 'Enumeration', link: '/language-reference/types/enum' },
+                            { text: 'Interface', link: '/language-reference/types/interface' },
                         ]
                     }
                 ]
