@@ -35,7 +35,7 @@ public struct Point : IDeconstructible<int, int>
     public int X;
     public int Y;
 
-    IDeconstructible<int, int>.Deconstruct(out int x, out int y)
+    void IDeconstructible<int, int>.Deconstruct(out int x, out int y)
     {
         x = X;
         y = Y;
