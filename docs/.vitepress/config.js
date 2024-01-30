@@ -30,6 +30,7 @@ module.exports = {
                             { text: 'Structure', link: '/language-reference/types/struct' },
                             { text: 'Enumeration', link: '/language-reference/types/enum' },
                             { text: 'Interface', link: '/language-reference/types/interface' },
+                            { text: 'Array', link: '/language-reference/types/array' },
                         ]
                     }
                 ]

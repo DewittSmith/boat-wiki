@@ -14,7 +14,7 @@
 * [Enum Types](/language-reference/types/enum): User-defined types of the form ```enum E {...}```. An enum type is a distinct type with predefined constants.
 * [Interface Types](/language-reference/types/interface): User-defined types of the form ```interface I {...}```
 * Array Types
-    * [Fixed Array](/): ```TYPE[SIZE]```
-    * [Dynamic Array](/): ```TYPE[]```
+    * [Fixed Array](/language-reference/types/array): ```TYPE[SIZE]```
+    * [Dynamic Array](/language-reference/types/array): ```TYPE[]```
 * [Delegate Types](/): User-defined types of the form ```delegate TYPE D(...)```
 * [Pointer Types](/): ```T*```
