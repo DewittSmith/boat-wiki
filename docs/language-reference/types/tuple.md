@@ -27,7 +27,7 @@ Two tuples are comparable when both of the following conditions are satisfied:
 * For each tuple position, the corresponding elements from the left-hand and right-hand tuple operands are comparable with the ```==``` and ```!=``` operators.
 
 ## Deconstruction
-You can deconstruct types that implement [IDeconstructible](/) to tuples. It is possible to deconstruct up to 4 elements.
+You can deconstruct types that implement [IDeconstructible](/) to tuples.
 
 ```cs
 public struct Point : IDeconstructible<int, int>

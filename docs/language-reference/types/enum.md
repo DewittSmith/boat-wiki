@@ -37,52 +37,73 @@ public enum Direction
 }
 ```
 
-And you even can alias some data with constants:
-```java
-public enum PlayerType
-{
-    Mage { BaseHealth: 3, BaseDamage: 7 } = 2,
-    Knight { BaseHealth: 8, BaseDamage: 2 } = 1,
-    Archer { BaseHealth: 5, BaseDamage: 5 } = 0
-    // And you still can explicitly set its values
+And you even can alias some data:
+```rust
+public enum WebEvent {
+    // An 'enum' variant may either be 'unit-like',
+    PageLoad = 5,
+    PageUnload = 4,
+    // like tuple structs,
+    KeyPress(char) = 3,
+    Paste(string, int) = 2,
+    // or like structures.
+    Click : IDeconstructible<int, int>
+    { 
+        public int X;
+        public int Y;
 
-    public int BaseHealth { get; private set; }
-    public int BaseDamage { get; private set; }
-}
-```
-Enums can contain any child members as [struct](/language-reference/types/struct) does. Every ```enum``` has a static method ```Values()```. It returns an array of all enum constants:
-
-```cs
-public enum Direction
-{
-    Up,
-    Down,
-    Left,
-    Right
-
-    public Direction Invert()
-    {
-        return switch (this)
+        public WebEvent.Click Negate()
         {
-            Direction.Up => Direction.Down,
-            Direction.Down => Direction.Up,
-            Direction.Left => Direction.Right,
-            Direction.Right => Direction.Left
-        };
+            return Click { X: -X, Y: -Y };
+        }
+
+        void IDeconstructible<int, int>.Deconstruct(out int x, out int y)
+        {
+            x = X;
+            y = Y;
+        }
+    } = 0,
+
+    public static void Process(WebEvent evt)
+    {
+        switch (evt)
+        {
+            PageLoad => print("Page loaded");
+            PageUnload => print("Page unloaded");
+            // Deconstruct tuple values
+            KeyPress(char c) => print($"Key '{c}' is pressed");
+            Paste(string s, int i) => print($"Pasted '{s}' at '{i}'");
+            // Struct-like enum variants need to implement 'IDeconstructible' for this to work
+            Click(int x, int y) => print($"Clicked at ({x}, {y})");
+        }
     }
 }
 
-foreach (var direction in Direction.Values())
+WebEvent.Process(WebEvent.PageLoad);
+WebEvent.Process(WebEvent.PageUnload);
+WebEvent.Process(WebEvent.KeyPress('A'));
+WebEvent.Process(WebEvent.Paste("Test", 3));
+WebEvent.Process(WebEvent.Click { X: 3, Y: 5 });
+```
+
+You can alias shared data with enums by using structure initialization syntax:
+```rust
+public enum PlayerType
 {
-    print(direction);
+    Mage { BaseHealth: 3, BaseDamage: 7 },
+    Knight { BaseHealth: 8, BaseDamage: 2 },
+    Archer { BaseHealth: 5, BaseDamage: 5 }
+
+    public int BaseHealth { get; }
+    public int BaseDamage { get; }
 }
 
-// Output:
-// Up
-// Down
-// Left
-// Right
+print(PlayerType.Mage.BaseHealth);
+print(PlayerType.Knight.BaseHealth);
+print(PlayerType.Archer.BaseHealth);
 ```
+
+Enums can contain any child members as [struct](/language-reference/types/struct) does.
 
 ## Enums as Flags
 If you want an enumeration type to represent a combination of choices, define enum members for those choices such that an individual choice is a bit field.
@@ -93,11 +114,11 @@ public enum Changes
     YChanged { Name: "Y Changed" } = 0b_0010,
     ZChanged { Name: "Z Changed" } = 0b_0100,
     XZChanged { Name: "XZ Changed" } = XChanged | ZChanged,
-    AllChanged = XChanged | YChanged | ZChanged,
-    // AllChanged will not have 'Name' property defined.
-    // You need to explicitly alias all the data.
 
-    public string Name { get; private set; }
+    // All unitialized enum variants will have all the fields defaulted
+    AllChanged = XChanged | YChanged | ZChanged,
+
+    public string Name { get; }
 }
 ```
 
